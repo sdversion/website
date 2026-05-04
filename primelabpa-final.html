@@ -134,22 +134,6 @@
             width: 100%;
         }
 
-        .nav-cta {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(214, 158, 46, 0.3);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(214, 158, 46, 0.4);
-        }
-
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -257,25 +241,6 @@
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(214, 158, 46, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(214, 158, 46, 0.5);
-        }
-
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
             color: white;
@@ -357,12 +322,6 @@
             z-index: 2;
         }
 
-        .floating-card.card-1 {
-            bottom: 50px;
-            left: -30px;
-            animation: floatCard 3s ease-in-out infinite;
-        }
-
         .floating-card.card-2 {
             top: 50px;
             right: -20px;
@@ -394,85 +353,6 @@
         .floating-card-sub {
             font-size: 0.75rem;
             color: var(--gray-600);
-        }
-
-        /* Digital Workflow Banner */
-        .digital-banner {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .digital-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
-            background-size: 80px 80px;
-        }
-
-        .digital-banner-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .digital-banner-text {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: white;
-        }
-
-        .digital-banner-text i {
-            font-size: 2.5rem;
-        }
-
-        .digital-banner-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .digital-banner-text p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .digital-features {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .digital-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            font-weight: 500;
-        }
-
-        .digital-feature i {
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
         }
 
         /* Services Section */
@@ -1190,13 +1070,6 @@
             .process-steps::before {
                 display: none;
             }
-            .digital-banner-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .digital-features {
-                justify-content: center;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1454,7 +1327,6 @@
                 <li><a href="#process">Process</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#contact" class="nav-cta">Send Digital Scan</a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1474,14 +1346,10 @@
                     <span>Dental Laboratory</span>
                 </h1>
                 <p class="hero-desc">
-                    Prime Dental Studio combines 40 years of expertise with cutting-edge digital technology. 
+                    Prime Dental Studio combines 40 years of expertise with cutting-edge digital technology.
                     Send us your digital scans and we'll start working immediately - no physical impressions needed.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">
-                        <span>Send Digital Scan</span>
-                        <i class="fas fa-upload"></i>
-                    </a>
                     <a href="#services" class="btn-secondary">
                         <i class="fas fa-list"></i>
                         <span>View Services</span>
@@ -1501,54 +1369,12 @@
             <div class="hero-image">
                 <div class="hero-image-frame"></div>
                 <img src="https://kimi-web-img.moonshot.cn/img/dentallabs.org/7b0d543d1b4978ee93679ac16dd30f0be5c91234.jpg" alt="Dental Technician" class="hero-image-main">
-                <div class="floating-card card-1">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <div class="floating-card-text">Digital Workflow</div>
-                        <div class="floating-card-sub">Scan & Send</div>
-                    </div>
-                </div>
                 <div class="floating-card card-2">
                     <i class="fas fa-bolt"></i>
                     <div>
                         <div class="floating-card-text">Same-Day Start</div>
                         <div class="floating-card-sub">Immediate Processing</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Digital Workflow Banner -->
-    <section class="digital-banner">
-        <div class="digital-banner-content">
-            <div class="digital-banner-text">
-                <i class="fas fa-qrcode"></i>
-                <div>
-                    <h3>Digital Scan Ready</h3>
-                    <p>Send your STL files directly - we work with all major intraoral scanners</p>
-                </div>
-            </div>
-            <div class="digital-features">
-                <div class="digital-feature">
-                    <i class="fas fa-check"></i>
-                    <span>3Shape</span>
-                </div>
-                <div class="digital-feature">
-                    <i class="fas fa-check"></i>
-                    <span>iTero</span>
-                </div>
-                <div class="digital-feature">
-                    <i class="fas fa-check"></i>
-                    <span>Mediit</span>
-                </div>
-                <div class="digital-feature">
-                    <i class="fas fa-check"></i>
-                    <span>CEREC</span>
-                </div>
-                <div class="digital-feature">
-                    <i class="fas fa-check"></i>
-                    <span>All STL Formats</span>
                 </div>
             </div>
         </div>
@@ -1574,7 +1400,7 @@
                     </div>
                     <h3 class="service-title">Crowns & Bridges</h3>
                     <p class="service-desc">
-                        Zirconia, E-max, PFM, and full-contour zirconia. All designed from digital scans 
+                        Zirconia, E-max, PFM, and full-contour zirconia. All designed from digital scans
                         for the perfect fit every time.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1588,7 +1414,7 @@
                     </div>
                     <h3 class="service-title">Implant Prosthetics</h3>
                     <p class="service-desc">
-                        Screw-retained, cement-retained, All-on-4, All-on-6, and custom abutments. 
+                        Screw-retained, cement-retained, All-on-4, All-on-6, and custom abutments.
                         Full digital implant workflow supported.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1602,7 +1428,7 @@
                     </div>
                     <h3 class="service-title">Dentures & Partials</h3>
                     <p class="service-desc">
-                        Digital dentures, chrome-cobalt partials, flexible Valplast, and implant-supported 
+                        Digital dentures, chrome-cobalt partials, flexible Valplast, and implant-supported
                         overdentures with precision fit.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1616,7 +1442,7 @@
                     </div>
                     <h3 class="service-title">Aesthetic Restorations</h3>
                     <p class="service-desc">
-                        Layered zirconia, e.max veneers, inlays/onlays, and custom shade matching 
+                        Layered zirconia, e.max veneers, inlays/onlays, and custom shade matching
                         for natural, beautiful results.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1630,7 +1456,7 @@
                     </div>
                     <h3 class="service-title">Digital Design</h3>
                     <p class="service-desc">
-                        Exocad and 3Shape design services. We accept your scans and return ready-to-mill 
+                        Exocad and 3Shape design services. We accept your scans and return ready-to-mill
                         files or finished restorations.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1644,7 +1470,7 @@
                     </div>
                     <h3 class="service-title">Repairs & Reline</h3>
                     <p class="service-desc">
-                        Fast turnaround on repairs, adjustments, relines, and additions. 
+                        Fast turnaround on repairs, adjustments, relines, and additions.
                         Digital records kept for all cases.
                     </p>
                     <a href="#contact" class="service-link">
@@ -1712,7 +1538,7 @@
                     </div>
                     <h2 class="section-title">Digital-First<br>Workflow</h2>
                     <p class="section-desc">
-                        Our lab is built for the digital age. Send us your scans and we'll handle 
+                        Our lab is built for the digital age. Send us your scans and we'll handle
                         everything from design to finished restoration.
                     </p>
                     <ul class="tech-list">
@@ -1785,562 +1611,4 @@
                     <div class="portfolio-overlay">
                         <i class="fas fa-search-plus"></i>
                         <h4>Hand-Finished Crown</h4>
-                        <p>Expert technician craftsmanship</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/blyssdental.com/9245f6895f75842471c1303b989941db02a66f0c.jpg" alt="Full Arch">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Full Arch Restoration</h4>
-                        <p>Implant-supported prosthesis</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/d3b3by4navws1f.cloudfront.net/1e93f718c5b7bdf79a29949e6fa9de0ecf332789.jpg" alt="All-on-4">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>All-on-4 Prosthesis</h4>
-                        <p>Full arch implant solution</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/assureddentallab.com/d0e92fc81f06c299625257e6bc519844a96692f6.jpg" alt="Zirconia Molar">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Zirconia Molar Crown</h4>
-                        <p>Full contour posterior crown</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.pro-craft.com/c5dcb97094eadb4fd2e3df7edb3a1115b22a4545.jpg" alt="PFM Crown">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>PFM Crown</h4>
-                        <p>Porcelain-fused-to-metal</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.styleitaliano.org/eb05d74884117ac44f02fc94f4d245c1d3b71c4b.jpg" alt="Veneers">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Ceramic Veneers</h4>
-                        <p>Anterior aesthetic veneers</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process" id="process">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">
-                    <i class="fas fa-tasks"></i>
-                    <span>Process</span>
-                </div>
-                <h2 class="section-title">Simple Digital Workflow</h2>
-                <p class="section-desc">
-                    Send your scan today - we'll start working immediately.
-                </p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h4 class="step-title">Upload Scan</h4>
-                    <p class="step-desc">Send STL files through our secure portal</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h4 class="step-title">We Design</h4>
-                    <p class="step-desc">Expert CAD design with your specifications</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h4 class="step-title">Manufacture</h4>
-                    <p class="step-desc">In-house milling and hand-finishing</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h4 class="step-title">Quality Check</h4>
-                    <p class="step-desc">Every case verified before shipping</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">05</div>
-                    <h4 class="step-title">Fast Delivery</h4>
-                    <p class="step-desc">Shipped directly to your practice</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-container">
-                <div class="contact-content">
-                    <div class="section-label">
-                        <i class="fas fa-envelope"></i>
-                        <span style="color: var(--accent-light);">Contact Us</span>
-                    </div>
-                    <h2 class="section-title" style="color: white;">Send Your Digital Scan Today</h2>
-                    <p class="section-desc" style="color: rgba(255,255,255,0.8);">
-                        Ready to start your case? Upload your STL files or contact us to learn more 
-                        about our digital workflow.
-                    </p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-item-text">
-                                <h4>Address</h4>
-                                <p>909 W Countyline Road<br>Warminster, PA 18974</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div class="contact-item-text">
-                                <h4>Phone</h4>
-                                <p>+1 (267) 437-8816</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div class="contact-item-text">
-                                <h4>Email</h4>
-                                <p>Primedentalstudio@yahoo.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div class="contact-item-text">
-                                <h4>Business Hours</h4>
-                                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                        </div>
-                        <div class="form-group">
-                            <label for="clinic">Practice Name *</label>
-                            <input type="text" id="clinic" name="clinic" required placeholder="Enter your practice name">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="crown">Crowns & Bridges</option>
-                                <option value="implant">Implant Prosthetics</option>
-                                <option value="denture">Dentures & Partials</option>
-                                <option value="aesthetic">Aesthetic Restorations</option>
-                                <option value="design">CAD Design Only</option>
-                                <option value="other">Other / Multiple</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message / Case Details</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your case or questions"></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-paper-plane"></i> Submit Inquiry
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo" style="margin-bottom: 1rem;">
-                        <div class="logo-icon">
-                            <i class="fas fa-tooth"></i>
-                        </div>
-                        <div>
-                            <div class="logo-text" style="color: white;">Prime</div>
-                            <div class="logo-sub">Dental Studio</div>
-                        </div>
-                    </div>
-                    <p>
-                        40 years of excellence in dental prosthetics. Full-service digital lab 
-                        accepting scans from all major intraoral scanners. Design, mill, finish - 
-                        all under one roof.
-                    </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Crowns & Bridges</a></li>
-                        <li><a href="#">Implant Prosthetics</a></li>
-                        <li><a href="#">Dentures & Partials</a></li>
-                        <li><a href="#">Aesthetic Restorations</a></li>
-                        <li><a href="#">CAD Design Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Digital Workflow</h4>
-                    <ul>
-                        <li><a href="#" class="footer-link" data-modal="uploadPortal">Upload Portal</a></li>
-                        <li><a href="#" class="footer-link" data-modal="fileRequirements">File Requirements</a></li>
-                        <li><a href="#" class="footer-link" data-modal="designServices">Design Services</a></li>
-                        <li><a href="#" class="footer-link" data-modal="rushCases">Rush Cases</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#" class="footer-link" data-modal="shippingInfo">Shipping Info</a></li>
-                        <li><a href="#" class="footer-link" data-modal="priceList">Price List</a></li>
-                        <li><a href="#" class="footer-link" data-modal="privacyPolicy">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Prime Dental Studio. All rights reserved.</p>
-                <p>909 W Countyline Road, Warminster, PA 18974 | +1 (267) 437-8816</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Info Modal (for footer links) -->
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="infoModalTitle"><i class="fas fa-info-circle"></i> Information</h3>
-                <button class="modal-close" id="infoModalClose">&times;</button>
-            </div>
-            <div class="modal-body" id="infoModalBody">
-                <!-- Content will be dynamically inserted -->
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry! We will contact you shortly to discuss your case.');
-            this.reset();
-        });
-
-        // Portfolio item click
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const title = this.querySelector('h4').textContent;
-                alert(title + ' - Contact us to learn more about this type of restoration.');
-            });
-        });
-
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            alert('Mobile menu feature coming soon!');
-        });
-
-        // Info Modal for Footer Links
-        const infoModal = document.getElementById('infoModal');
-        const infoModalTitle = document.getElementById('infoModalTitle');
-        const infoModalBody = document.getElementById('infoModalBody');
-        const infoModalClose = document.getElementById('infoModalClose');
-
-        const modalContent = {
-            uploadPortal: {
-                title: '<i class="fas fa-cloud-upload-alt"></i> Upload Portal',
-                body: `
-                    <div style="text-align: center; padding: 1rem 0;">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: white;"></i>
-                        </div>
-                        <h4 style="margin-bottom: 1rem; color: var(--gray-800);">Secure File Upload</h4>
-                        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Send your digital scans directly to our lab. We accept all major file formats including STL, PLY, and OBJ.</p>
-                        <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 1.5rem;">
-                            <p style="font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color: var(--accent);"></i> Email your files to:</p>
-                            <p style="font-size: 1.1rem; color: var(--primary);">Primedentalstudio@yahoo.com</p>
-                        </div>
-                        <p style="font-size: 0.9rem; color: var(--gray-500);">Please include your practice name and case details in the email.</p>
-                    </div>
-                `
-            },
-            fileRequirements: {
-                title: '<i class="fas fa-file-alt"></i> File Requirements',
-                body: `
-                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">To ensure the best results, please follow these guidelines when submitting digital files:</p>
-                    <div style="space-y: 1rem;">
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
-                            <i class="fas fa-file" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Accepted Formats</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">STL, PLY, OBJ, and most industry-standard formats</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
-                            <i class="fas fa-ruler" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Scan Quality</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Ensure complete scans with clear margin lines</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
-                            <i class="fas fa-tooth" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Bite Registration</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Include bite scan for multi-unit cases</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
-                            <i class="fas fa-comment" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Prescription</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Include detailed Rx with shade, material, and design notes</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            designServices: {
-                title: '<i class="fas fa-drafting-compass"></i> Design Services',
-                body: `
-                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">Need CAD design only? We offer professional design services using industry-leading software:</p>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-                            <i class="fas fa-cube" style="font-size: 2rem; margin-bottom: 0.75rem;"></i>
-                            <h5 style="margin-bottom: 0.25rem;">Exocad</h5>
-                            <p style="font-size: 0.85rem; opacity: 0.9;">Full module access</p>
-                        </div>
-                        <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-                            <i class="fas fa-shapes" style="font-size: 2rem; margin-bottom: 0.75rem;"></i>
-                            <h5 style="margin-bottom: 0.25rem;">3Shape</h5>
-                            <p style="font-size: 0.85rem; opacity: 0.9;">Dental System</p>
-                        </div>
-                    </div>
-                    <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 12px;">
-                        <h5 style="margin-bottom: 1rem;"><i class="fas fa-list-check" style="color: var(--accent);"></i> Design Services Include:</h5>
-                        <ul style="list-style: none; color: var(--gray-600);">
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Crown & bridge design</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Implant abutment design</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Full denture design</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Surgical guide design</li>
-                            <li><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Custom abutments</li>
-                        </ul>
-                    </div>
-                `
-            },
-            rushCases: {
-                title: '<i class="fas fa-bolt"></i> Rush Cases',
-                body: `
-                    <div style="text-align: center; padding: 1rem 0;">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-bolt" style="font-size: 2rem; color: white;"></i>
-                        </div>
-                        <h4 style="margin-bottom: 1rem; color: var(--gray-800);">Need It Fast?</h4>
-                        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">We offer expedited processing for urgent cases. Contact us for same-day or next-day service.</p>
-                    </div>
-                    <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #fffaf0; border-radius: 10px; border-left: 4px solid var(--accent);">
-                            <i class="fas fa-clock" style="color: var(--accent); font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600;">Same-Day Service</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Crown design & milling - ready in 4-6 hours</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #fffaf0; border-radius: 10px; border-left: 4px solid var(--accent);">
-                            <i class="fas fa-shipping-fast" style="color: var(--accent); font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600;">Next-Day Delivery</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Most restorations shipped within 24 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1rem 1.5rem; border-radius: 12px; text-align: center;">
-                        <p style="margin: 0;"><i class="fas fa-phone"></i> Call us at +1 (267) 437-8816 for rush case pricing</p>
-                    </div>
-                `
-            },
-            shippingInfo: {
-                title: '<i class="fas fa-shipping-fast"></i> Shipping Information',
-                body: `
-                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">We ship nationwide with reliable carriers to ensure your cases arrive safely and on time:</p>
-                    <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
-                            <i class="fas fa-box" style="color: var(--accent); font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600;">Standard Shipping</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">UPS Ground / FedEx Ground - 1-2 business days</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
-                            <i class="fas fa-plane" style="color: var(--accent); font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600;">Express Shipping</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">UPS Next Day / FedEx Priority - Next business day</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
-                            <i class="fas fa-hand-holding" style="color: var(--accent); font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 style="font-weight: 600;">Local Pickup</h5>
-                                <p style="color: var(--gray-600); font-size: 0.9rem;">Available at our Warminster location</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background: #f0fff4; padding: 1rem 1.5rem; border-radius: 12px; border-left: 4px solid #48bb78;">
-                        <p style="margin: 0; color: #276749;"><i class="fas fa-check-circle"></i> All shipments include tracking numbers sent via email</p>
-                    </div>
-                `
-            },
-            priceList: {
-                title: '<i class="fas fa-tags"></i> Price List',
-                body: `
-                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">Competitive pricing for high-quality dental prosthetics:</p>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-crown" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
-                            <h5 style="font-weight: 600;">Zirconia Crown</h5>
-                            <p style="color: var(--gray-500); font-size: 0.85rem;">$100</p>
-                        </div>
-                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-gem" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
-                            <h5 style="font-weight: 600;">e.max Crown</h5>
-                            <p style="color: var(--gray-500); font-size: 0.85rem;">$120</p>
-                        </div>
-                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-teeth" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
-                            <h5 style="font-weight: 600;">Full Denture</h5>
-                            <p style="color: var(--gray-500); font-size: 0.85rem;">$210</p>
-                        </div>
-                    </div>
-                    <div style="background: #fffaf0; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid var(--accent);">
-                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent);"></i> Volume discounts available for high-volume practices.</p>
-                    </div>
-                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-                        <p style="margin-bottom: 1rem;"><i class="fas fa-file-pdf"></i> Request detailed price list</p>
-                        <a href="mailto:Primedentalstudio@yahoo.com?subject=Complete Price List Request" style="display: inline-block; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600;">
-                            <i class="fas fa-envelope"></i> Email Us
-                        </a>
-                    </div>
-                `
-            },
-            privacyPolicy: {
-                title: '<i class="fas fa-shield-alt"></i> Privacy Policy',
-                body: `
-                    <div style="max-height: 400px; overflow-y: auto; padding-right: 0.5rem;">
-                        <p style="margin-bottom: 1rem; color: var(--gray-600);">At Prime Dental Studio, we take your privacy seriously. This policy outlines how we handle your data:</p>
-                        
-                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-lock" style="color: var(--accent);"></i> Data Protection</h5>
-                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">All patient data and digital scans are encrypted and stored securely. We comply with HIPAA regulations for all patient information.</p>
-                        
-                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-file-medical" style="color: var(--accent);"></i> Patient Information</h5>
-                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Patient names and identifiable information are only used for case processing. We do not share patient data with third parties.</p>
-                        
-                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-cloud" style="color: var(--accent);"></i> File Storage</h5>
-                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Digital files are retained for quality assurance purposes for 7 years, then securely deleted upon request.</p>
-                        
-                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-handshake" style="color: var(--accent);"></i> Third Parties</h5>
-                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">We do not sell or share your practice information with marketing companies or unrelated third parties.</p>
-                        
-                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-                            <p style="font-size: 0.85rem; color: var(--gray-500); margin: 0;">Last updated: January 2026. For questions, contact us at Primedentalstudio@yahoo.com</p>
-                        </div>
-                    </div>
-                `
-            }
-        };
-
-        // Footer link click handlers
-        document.querySelectorAll('.footer-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const modalType = this.getAttribute('data-modal');
-                const content = modalContent[modalType];
-                
-                if (content) {
-                    infoModalTitle.innerHTML = content.title;
-                    infoModalBody.innerHTML = content.body;
-                    infoModal.classList.add('active');
-                }
-            });
-        });
-
-        // Close info modal
-        infoModalClose.addEventListener('click', function() {
-            infoModal.classList.remove('active');
-        });
-
-        // Close info modal when clicking outside
-        infoModal.addEventListener('click', function(e) {
-            if (e.target === infoModal) {
-                infoModal.classList.remove('active');
-            }
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements
-        document.querySelectorAll('.service-card, .portfolio-item, .process-step, .testimonial-card, .full-service-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+                        <p>Expert technician 
