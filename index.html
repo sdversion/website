@@ -39,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -143,7 +142,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #2d3748 100%);
@@ -156,10 +154,7 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
             background-size: 100px 100px;
             animation: float 20s linear infinite;
@@ -355,10 +350,17 @@
             color: var(--gray-600);
         }
 
-        /* Services Section */
-        .services {
+        .services,
+        .technology,
+        .process {
             padding: 6rem 0;
             background: var(--gray-50);
+        }
+
+        .full-service,
+        .portfolio {
+            padding: 6rem 0;
+            background: white;
         }
 
         .container {
@@ -395,7 +397,7 @@
         .section-desc {
             color: var(--gray-600);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -484,12 +486,6 @@
             gap: 0.75rem;
         }
 
-        /* Full Service Section */
-        .full-service {
-            padding: 6rem 0;
-            background: white;
-        }
-
         .full-service-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -534,12 +530,6 @@
         .full-service-item p {
             font-size: 0.9rem;
             color: var(--gray-600);
-        }
-
-        /* Technology Section */
-        .technology {
-            padding: 6rem 0;
-            background: var(--gray-50);
         }
 
         .tech-container {
@@ -631,12 +621,6 @@
             color: var(--gray-600);
         }
 
-        /* Portfolio Section */
-        .portfolio {
-            padding: 6rem 0;
-            background: white;
-        }
-
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -664,10 +648,7 @@
 
         .portfolio-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%);
             display: flex;
             flex-direction: column;
@@ -688,20 +669,11 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
         }
 
         .portfolio-overlay p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.85rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.1s;
-        }
-
-        .portfolio-item:hover .portfolio-overlay h4,
-        .portfolio-item:hover .portfolio-overlay p {
-            transform: translateY(0);
         }
 
         .portfolio-overlay i {
@@ -714,18 +686,6 @@
             justify-content: center;
             color: white;
             margin-bottom: 1rem;
-            transform: scale(0);
-            transition: transform 0.4s ease;
-        }
-
-        .portfolio-item:hover .portfolio-overlay i {
-            transform: scale(1);
-        }
-
-        /* Process Section */
-        .process {
-            padding: 6rem 0;
-            background: var(--gray-50);
         }
 
         .process-steps {
@@ -733,6 +693,7 @@
             justify-content: space-between;
             position: relative;
             margin-top: 4rem;
+            gap: 2rem;
         }
 
         .process-steps::before {
@@ -749,7 +710,8 @@
             text-align: center;
             position: relative;
             flex: 1;
-            max-width: 200px;
+            max-width: 220px;
+            margin: 0 auto;
         }
 
         .step-number {
@@ -789,12 +751,12 @@
             color: var(--gray-600);
         }
 
-        /* Contact Section */
         .contact {
             padding: 6rem 0;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             position: relative;
             overflow: hidden;
+            scroll-margin-top: 100px;
         }
 
         .contact::before {
@@ -810,10 +772,11 @@
 
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             position: relative;
             z-index: 1;
+            max-width: 760px;
         }
 
         .contact-content {
@@ -826,6 +789,8 @@
 
         .contact-content .section-desc {
             color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            max-width: 100%;
         }
 
         .contact-info {
@@ -863,69 +828,15 @@
             font-size: 0.95rem;
         }
 
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--gray-100);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        .contact-item-text a {
             color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(214, 158, 46, 0.4);
+        .contact-item-text a:hover {
+            text-decoration: underline;
         }
 
-        /* Footer */
         .footer {
             background: var(--gray-900);
             color: white;
@@ -1021,7 +932,10 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
+        .modal {
+            display: none;
+        }
+
         @media (max-width: 1200px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1035,38 +949,41 @@
         }
 
         @media (max-width: 992px) {
-            .hero-container {
+            .hero-container,
+            .tech-container {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
             .hero-content {
                 order: 2;
             }
+
             .hero-image {
                 order: 1;
             }
+
             .hero-desc {
                 margin: 0 auto 2rem;
             }
-            .hero-buttons {
-                justify-content: center;
-            }
+
+            .hero-buttons,
             .hero-stats {
                 justify-content: center;
             }
-            .tech-container {
-                grid-template-columns: 1fr;
+
+            .tech-content {
+                padding-left: 0;
             }
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .process-steps {
                 flex-wrap: wrap;
-                gap: 2rem;
             }
+
             .process-steps::before {
                 display: none;
             }
@@ -1076,26 +993,31 @@
             .nav-links {
                 display: none;
             }
+
             .mobile-menu-btn {
                 display: block;
             }
+
             .hero-title {
                 font-size: 2.5rem;
             }
+
             .section-title {
                 font-size: 2rem;
             }
-            .services-grid {
+
+            .services-grid,
+            .full-service-grid,
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
+
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .full-service-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
+
+            .floating-card.card-2 {
+                right: 0;
             }
         }
 
@@ -1103,214 +1025,29 @@
             .hero-title {
                 font-size: 2rem;
             }
+
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero-stats {
                 flex-direction: column;
                 gap: 1.5rem;
             }
-        }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 20px 20px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .modal-body > p {
-            color: var(--gray-600);
-            margin-bottom: 1.5rem;
-        }
-
-        .case-search {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .case-search input {
-            flex: 1;
-            padding: 1rem 1.25rem;
-            border: 2px solid var(--gray-100);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .case-search input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .btn-check {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .btn-check:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(214, 158, 46, 0.4);
-        }
-
-        .case-result {
-            padding: 1.5rem;
-            background: var(--gray-50);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .case-result.success {
-            border-left-color: #48bb78;
-            background: #f0fff4;
-        }
-
-        .case-result.error {
-            border-left-color: #f56565;
-            background: #fff5f5;
-        }
-
-        .case-result h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-        }
-
-        .case-result p {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 0.75rem;
-        }
-
-        .status-badge.in-progress {
-            background: #ebf8ff;
-            color: #3182ce;
-        }
-
-        .status-badge.ready {
-            background: #f0fff4;
-            color: #38a169;
-        }
-
-        .status-badge.shipped {
-            background: #faf5ff;
-            color: #805ad5;
-        }
-
-        @media (max-width: 480px) {
-            .case-search {
-                flex-direction: column;
-            }
-            .btn-check {
-                justify-content: center;
+            .nav-container,
+            .container,
+            .footer-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-tooth"></i>
                 </div>
@@ -1333,7 +1070,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -1380,7 +1116,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
@@ -1408,6 +1143,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-teeth-open"></i>
@@ -1422,6 +1158,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-teeth"></i>
@@ -1436,6 +1173,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-magic"></i>
@@ -1450,6 +1188,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-x-ray"></i>
@@ -1464,6 +1203,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-tools"></i>
@@ -1482,7 +1222,6 @@
         </div>
     </section>
 
-    <!-- Full Service Section -->
     <section class="full-service">
         <div class="container">
             <div class="section-header">
@@ -1520,7 +1259,6 @@
         </div>
     </section>
 
-    <!-- Technology Section -->
     <section class="technology" id="technology">
         <div class="container">
             <div class="tech-container">
@@ -1537,7 +1275,7 @@
                         <span>Technology</span>
                     </div>
                     <h2 class="section-title">Digital-First<br>Workflow</h2>
-                    <p class="section-desc">
+                    <p class="section-desc" style="margin:0;">
                         Our lab is built for the digital age. Send us your scans and we'll handle
                         everything from design to finished restoration.
                     </p>
@@ -1546,28 +1284,28 @@
                             <i class="fas fa-cloud-upload-alt"></i>
                             <div class="tech-list-text">
                                 <h4>Direct Digital Upload</h4>
-                                <p>Secure portal for STL file uploads - start immediately</p>
+                                <p>Secure intake for STL files and digital case information</p>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-cube"></i>
                             <div class="tech-list-text">
                                 <h4>Exocad & 3Shape</h4>
-                                <p>Latest design software with certified technicians</p>
+                                <p>Latest design software with experienced digital technicians</p>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-print"></i>
                             <div class="tech-list-text">
                                 <h4>5-Axis Milling Center</h4>
-                                <p>In-house milling for zirconia, PMMA, and more</p>
+                                <p>In-house milling for zirconia, PMMA, wax, and more</p>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-fire"></i>
                             <div class="tech-list-text">
                                 <h4>High-Temp Sintering</h4>
-                                <p>Programat furnaces for perfect strength and shade</p>
+                                <p>Reliable finishing workflow for strength, shade, and consistency</p>
                             </div>
                         </li>
                     </ul>
@@ -1576,7 +1314,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header">
@@ -1607,8 +1344,199 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/woodstock-smiles.com/da62a52d35213cabb827b8533053f5e5a78dc30b.jpg" alt="Technician Work">
+                    <img src="https://kimi-web-img.moonshot.cn/img/woodstock-smiles.com/da62a52d35213cabb827b8533053f5e5a78dc30b.jpg" alt="Hand-Finished Crown">
                     <div class="portfolio-overlay">
                         <i class="fas fa-search-plus"></i>
                         <h4>Hand-Finished Crown</h4>
-                        <p>Expert technician 
+                        <p>Expert technician detailing and finish</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.burbankdental.com/72186a53ad6e0e7f73fc653d75b778a3ae0902ef.jpg" alt="Implant Prosthetic">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Implant Prosthetic</h4>
+                        <p>Digital implant-supported restoration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-diagram-project"></i>
+                    <span>Process</span>
+                </div>
+                <h2 class="section-title">Simple Digital Workflow</h2>
+                <p class="section-desc">
+                    A streamlined process from case submission to final delivery.
+                </p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Send Case</h3>
+                    <p class="step-desc">Submit your scan, prescription, and case details.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Design & Review</h3>
+                    <p class="step-desc">Our team designs the case using a precise digital workflow.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Production</h3>
+                    <p class="step-desc">Milling, finishing, and quality control are completed in-house.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Delivery</h3>
+                    <p class="step-desc">Your restoration is completed and ready for delivery or pickup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="section-label">
+                        <i class="fas fa-envelope"></i>
+                        <span style="color: var(--accent-light);">Contact Us</span>
+                    </div>
+
+                    <h2 class="section-title" style="color: white;">Get in Touch With Prime Dental Studio</h2>
+
+                    <p class="section-desc" style="color: rgba(255,255,255,0.8);">
+                        Contact Prime Dental Studio for case questions, turnaround times, digital workflow support,
+                        and general lab inquiries. We also provide digital work services. Please call us directly for more detailed information.
+                    </p>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-text">
+                                <h4>Address</h4>
+                                <p>909 W Countyline Road<br>Warminster, PA 18974</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-text">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+12674378816">+1 267-437-8816</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-text">
+                                <h4>Email</h4>
+                                <p><a href="mailto:primedentalstudio@yahoo.com">primedentalstudio@yahoo.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-text">
+                                <h4>Business Hours</h4>
+                                <p>Mon - Fri 9AM - 6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <div>
+                            <div class="logo-text">Prime</div>
+                            <div class="logo-sub">Dental Studio</div>
+                        </div>
+                    </div>
+                    <p>
+                        Full-service digital dental laboratory delivering precise restorations,
+                        dependable turnaround, and experienced technical support.
+                    </p>
+                    <div class="social-links">
+                        <a href="mailto:primedentalstudio@yahoo.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+12674378816"><i class="fas fa-phone"></i></a>
+                        <a href="#contact"><i class="fas fa-map-marker-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Crowns & Bridges</a></li>
+                        <li><a href="#services">Implant Prosthetics</a></li>
+                        <li><a href="#services">Dentures & Partials</a></li>
+                        <li><a href="#services">Digital Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+12674378816">+1 267-437-8816</a></li>
+                        <li><a href="mailto:primedentalstudio@yahoo.com">Email Us</a></li>
+                        <li><a href="#contact">Warminster, PA</a></li>
+                        <li><a href="#contact">Mon - Fri 9AM - 6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prime Dental Studio. All rights reserved.</p>
+                <p>Digital workflow support available by phone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
