@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Dental Studio | Full-Service Digital Dental Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #d69e2e;
+            --accent-light: #ecc94b;
+            --white: #ffffff;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-200: #e2e8f0;
+            --gray-600: #718096;
+            --gray-700: #4a5568;
+            --gray-800: #2d3748;
+            --gray-900: #1a202c;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--gray-600);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(214, 158, 46, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(214, 158, 46, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #2d3748 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
+            background-size: 100px 100px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-badge i {
+            color: var(--accent-light);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            color: var(--accent-light);
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(214, 158, 46, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(214, 158, 46, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.25rem;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-image-main {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-frame {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent);
+            border-radius: 20px;
+            z-index: 0;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 2;
+        }
+
+        .floating-card.card-1 {
+            bottom: 50px;
+            left: -30px;
+            animation: floatCard 3s ease-in-out infinite;
+        }
+
+        .floating-card.card-2 {
+            top: 50px;
+            right: -20px;
+            animation: floatCard 3s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .floating-card-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .floating-card-sub {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        /* Digital Workflow Banner */
+        .digital-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .digital-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 80px 80px;
+        }
+
+        .digital-banner-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .digital-banner-text {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+        }
+
+        .digital-banner-text i {
+            font-size: 2.5rem;
+        }
+
+        .digital-banner-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .digital-banner-text p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .digital-features {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .digital-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .digital-feature i {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-100);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: rotateY(360deg);
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Full Service Section */
+        .full-service {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .full-service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .full-service-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .full-service-item:hover {
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .full-service-item i {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .full-service-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .full-service-item p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Technology Section */
+        .technology {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .tech-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tech-image {
+            position: relative;
+        }
+
+        .tech-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .tech-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(214, 158, 46, 0.3);
+        }
+
+        .tech-badge-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .tech-badge-text {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .tech-content {
+            padding-left: 1rem;
+        }
+
+        .tech-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .tech-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-list li:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(10px);
+        }
+
+        .tech-list i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .tech-list-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-list-text p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h4,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay i {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1rem;
+            transform: scale(0);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay i {
+            transform: scale(1);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-content {
+            color: white;
+        }
+
+        .contact-content .section-title {
+            color: white;
+        }
+
+        .contact-content .section-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-light);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-100);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(214, 158, 46, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .full-service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                order: 2;
+            }
+            .hero-image {
+                order: 1;
+            }
+            .hero-desc {
+                margin: 0 auto 2rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .tech-container {
+                grid-template-columns: 1fr;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            .process-steps::before {
+                display: none;
+            }
+            .digital-banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .digital-features {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .full-service-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body > p {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-search {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-search input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gray-100);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .case-search input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn-check {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-check:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(214, 158, 46, 0.4);
+        }
+
+        .case-result {
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .case-result.success {
+            border-left-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .case-result.error {
+            border-left-color: #f56565;
+            background: #fff5f5;
+        }
+
+        .case-result h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-result p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        .status-badge.in-progress {
+            background: #ebf8ff;
+            color: #3182ce;
+        }
+
+        .status-badge.ready {
+            background: #f0fff4;
+            color: #38a169;
+        }
+
+        .status-badge.shipped {
+            background: #faf5ff;
+            color: #805ad5;
+        }
+
+        @media (max-width: 480px) {
+            .case-search {
+                flex-direction: column;
+            }
+            .btn-check {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tooth"></i>
+                </div>
+                <div>
+                    <div class="logo-text">Prime</div>
+                    <div class="logo-sub">Dental Studio</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Send Digital Scan</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <span>40 Years of Excellence</span>
+                </div>
+                <h1 class="hero-title">
+                    Full-Service Digital<br>
+                    <span>Dental Laboratory</span>
+                </h1>
+                <p class="hero-desc">
+                    Prime Dental Studio combines 40 years of expertise with cutting-edge digital technology. 
+                    Send us your digital scans and we'll start working immediately - no physical impressions needed.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <span>Send Digital Scan</span>
+                        <i class="fas fa-upload"></i>
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-list"></i>
+                        <span>View Services</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">40</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Cases Completed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-frame"></div>
+                <img src="https://kimi-web-img.moonshot.cn/img/dentallabs.org/7b0d543d1b4978ee93679ac16dd30f0be5c91234.jpg" alt="Dental Technician" class="hero-image-main">
+                <div class="floating-card card-1">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <div class="floating-card-text">Digital Workflow</div>
+                        <div class="floating-card-sub">Scan & Send</div>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <div class="floating-card-text">Same-Day Start</div>
+                        <div class="floating-card-sub">Immediate Processing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Workflow Banner -->
+    <section class="digital-banner">
+        <div class="digital-banner-content">
+            <div class="digital-banner-text">
+                <i class="fas fa-qrcode"></i>
+                <div>
+                    <h3>Digital Scan Ready</h3>
+                    <p>Send your STL files directly - we work with all major intraoral scanners</p>
+                </div>
+            </div>
+            <div class="digital-features">
+                <div class="digital-feature">
+                    <i class="fas fa-check"></i>
+                    <span>3Shape</span>
+                </div>
+                <div class="digital-feature">
+                    <i class="fas fa-check"></i>
+                    <span>iTero</span>
+                </div>
+                <div class="digital-feature">
+                    <i class="fas fa-check"></i>
+                    <span>Mediit</span>
+                </div>
+                <div class="digital-feature">
+                    <i class="fas fa-check"></i>
+                    <span>CEREC</span>
+                </div>
+                <div class="digital-feature">
+                    <i class="fas fa-check"></i>
+                    <span>All STL Formats</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-teeth"></i>
+                    <span>Our Services</span>
+                </div>
+                <h2 class="section-title">Complete Prosthetic Solutions</h2>
+                <p class="section-desc">
+                    From simple crowns to full-mouth rehabilitations - we handle it all with precision and care.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="service-title">Crowns & Bridges</h3>
+                    <p class="service-desc">
+                        Zirconia, E-max, PFM, and full-contour zirconia. All designed from digital scans 
+                        for the perfect fit every time.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-teeth-open"></i>
+                    </div>
+                    <h3 class="service-title">Implant Prosthetics</h3>
+                    <p class="service-desc">
+                        Screw-retained, cement-retained, All-on-4, All-on-6, and custom abutments. 
+                        Full digital implant workflow supported.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-teeth"></i>
+                    </div>
+                    <h3 class="service-title">Dentures & Partials</h3>
+                    <p class="service-desc">
+                        Digital dentures, chrome-cobalt partials, flexible Valplast, and implant-supported 
+                        overdentures with precision fit.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="service-title">Aesthetic Restorations</h3>
+                    <p class="service-desc">
+                        Layered zirconia, e.max veneers, inlays/onlays, and custom shade matching 
+                        for natural, beautiful results.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3 class="service-title">Digital Design</h3>
+                    <p class="service-desc">
+                        Exocad and 3Shape design services. We accept your scans and return ready-to-mill 
+                        files or finished restorations.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="service-title">Repairs & Reline</h3>
+                    <p class="service-desc">
+                        Fast turnaround on repairs, adjustments, relines, and additions. 
+                        Digital records kept for all cases.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Service Section -->
+    <section class="full-service">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-infinity"></i>
+                    <span>Full Service</span>
+                </div>
+                <h2 class="section-title">Everything Under One Roof</h2>
+                <p class="section-desc">
+                    From design to delivery - complete digital and traditional workflow capabilities.
+                </p>
+            </div>
+            <div class="full-service-grid">
+                <div class="full-service-item">
+                    <i class="fas fa-file-import"></i>
+                    <h4>Digital Intake</h4>
+                    <p>STL files, intraoral scans, and digital prescriptions</p>
+                </div>
+                <div class="full-service-item">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h4>CAD Design</h4>
+                    <p>Exocad & 3Shape design with expert technicians</p>
+                </div>
+                <div class="full-service-item">
+                    <i class="fas fa-cogs"></i>
+                    <h4>In-House Milling</h4>
+                    <p>5-axis milling for zirconia, PMMA, and wax</p>
+                </div>
+                <div class="full-service-item">
+                    <i class="fas fa-fire-alt"></i>
+                    <h4>Sintering & Finish</h4>
+                    <p>High-temp sintering and hand-layered ceramics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology" id="technology">
+        <div class="container">
+            <div class="tech-container">
+                <div class="tech-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/image.made-in-china.com/8cffcceb0daa7f06d02caf2724678492a18c5fb7.webp" alt="Dental Technology">
+                    <div class="tech-badge">
+                        <div class="tech-badge-number">99.9%</div>
+                        <div class="tech-badge-text">Fit Rate</div>
+                    </div>
+                </div>
+                <div class="tech-content">
+                    <div class="section-label">
+                        <i class="fas fa-microchip"></i>
+                        <span>Technology</span>
+                    </div>
+                    <h2 class="section-title">Digital-First<br>Workflow</h2>
+                    <p class="section-desc">
+                        Our lab is built for the digital age. Send us your scans and we'll handle 
+                        everything from design to finished restoration.
+                    </p>
+                    <ul class="tech-list">
+                        <li>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <div class="tech-list-text">
+                                <h4>Direct Digital Upload</h4>
+                                <p>Secure portal for STL file uploads - start immediately</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-cube"></i>
+                            <div class="tech-list-text">
+                                <h4>Exocad & 3Shape</h4>
+                                <p>Latest design software with certified technicians</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-print"></i>
+                            <div class="tech-list-text">
+                                <h4>5-Axis Milling Center</h4>
+                                <p>In-house milling for zirconia, PMMA, and more</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-fire"></i>
+                            <div class="tech-list-text">
+                                <h4>High-Temp Sintering</h4>
+                                <p>Programat furnaces for perfect strength and shade</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-images"></i>
+                    <span>Portfolio</span>
+                </div>
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-desc">
+                    Browse through our portfolio of precision-crafted dental restorations.
+                </p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/bayshoredentalstudio.com/6f286c18b5460280a4e013f7f7a41886c7f32a3d.jpeg" alt="Zirconia Crown">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Zirconia Crown</h4>
+                        <p>High-strength posterior restoration</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.firstchoicelab.com/1db240f15de1413ad6e460ccc59fffea1f0edc81.jpg" alt="Zirconia Bridge">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Zirconia Bridge</h4>
+                        <p>Multi-unit posterior bridge</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/woodstock-smiles.com/da62a52d35213cabb827b8533053f5e5a78dc30b.jpg" alt="Technician Work">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Hand-Finished Crown</h4>
+                        <p>Expert technician craftsmanship</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/blyssdental.com/9245f6895f75842471c1303b989941db02a66f0c.jpg" alt="Full Arch">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Full Arch Restoration</h4>
+                        <p>Implant-supported prosthesis</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/d3b3by4navws1f.cloudfront.net/1e93f718c5b7bdf79a29949e6fa9de0ecf332789.jpg" alt="All-on-4">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>All-on-4 Prosthesis</h4>
+                        <p>Full arch implant solution</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/assureddentallab.com/d0e92fc81f06c299625257e6bc519844a96692f6.jpg" alt="Zirconia Molar">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Zirconia Molar Crown</h4>
+                        <p>Full contour posterior crown</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.pro-craft.com/c5dcb97094eadb4fd2e3df7edb3a1115b22a4545.jpg" alt="PFM Crown">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>PFM Crown</h4>
+                        <p>Porcelain-fused-to-metal</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.styleitaliano.org/eb05d74884117ac44f02fc94f4d245c1d3b71c4b.jpg" alt="Veneers">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Ceramic Veneers</h4>
+                        <p>Anterior aesthetic veneers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-tasks"></i>
+                    <span>Process</span>
+                </div>
+                <h2 class="section-title">Simple Digital Workflow</h2>
+                <p class="section-desc">
+                    Send your scan today - we'll start working immediately.
+                </p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">Upload Scan</h4>
+                    <p class="step-desc">Send STL files through our secure portal</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">We Design</h4>
+                    <p class="step-desc">Expert CAD design with your specifications</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">Manufacture</h4>
+                    <p class="step-desc">In-house milling and hand-finishing</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">Quality Check</h4>
+                    <p class="step-desc">Every case verified before shipping</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <h4 class="step-title">Fast Delivery</h4>
+                    <p class="step-desc">Shipped directly to your practice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="section-label">
+                        <i class="fas fa-envelope"></i>
+                        <span style="color: var(--accent-light);">Contact Us</span>
+                    </div>
+                    <h2 class="section-title" style="color: white;">Send Your Digital Scan Today</h2>
+                    <p class="section-desc" style="color: rgba(255,255,255,0.8);">
+                        Ready to start your case? Upload your STL files or contact us to learn more 
+                        about our digital workflow.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-text">
+                                <h4>Address</h4>
+                                <p>909 W Countyline Road<br>Warminster, PA 18974</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-text">
+                                <h4>Phone</h4>
+                                <p>+1 (267) 437-8816</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-text">
+                                <h4>Email</h4>
+                                <p>Primedentalstudio@yahoo.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-text">
+                                <h4>Business Hours</h4>
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="clinic">Practice Name *</label>
+                            <input type="text" id="clinic" name="clinic" required placeholder="Enter your practice name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="crown">Crowns & Bridges</option>
+                                <option value="implant">Implant Prosthetics</option>
+                                <option value="denture">Dentures & Partials</option>
+                                <option value="aesthetic">Aesthetic Restorations</option>
+                                <option value="design">CAD Design Only</option>
+                                <option value="other">Other / Multiple</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message / Case Details</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your case or questions"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <div>
+                            <div class="logo-text" style="color: white;">Prime</div>
+                            <div class="logo-sub">Dental Studio</div>
+                        </div>
+                    </div>
+                    <p>
+                        40 years of excellence in dental prosthetics. Full-service digital lab 
+                        accepting scans from all major intraoral scanners. Design, mill, finish - 
+                        all under one roof.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Crowns & Bridges</a></li>
+                        <li><a href="#">Implant Prosthetics</a></li>
+                        <li><a href="#">Dentures & Partials</a></li>
+                        <li><a href="#">Aesthetic Restorations</a></li>
+                        <li><a href="#">CAD Design Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Digital Workflow</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link" data-modal="uploadPortal">Upload Portal</a></li>
+                        <li><a href="#" class="footer-link" data-modal="fileRequirements">File Requirements</a></li>
+                        <li><a href="#" class="footer-link" data-modal="designServices">Design Services</a></li>
+                        <li><a href="#" class="footer-link" data-modal="rushCases">Rush Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#" class="footer-link" data-modal="shippingInfo">Shipping Info</a></li>
+                        <li><a href="#" class="footer-link" data-modal="priceList">Price List</a></li>
+                        <li><a href="#" class="footer-link" data-modal="privacyPolicy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Prime Dental Studio. All rights reserved.</p>
+                <p>909 W Countyline Road, Warminster, PA 18974 | +1 (267) 437-8816</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Info Modal (for footer links) -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="infoModalTitle"><i class="fas fa-info-circle"></i> Information</h3>
+                <button class="modal-close" id="infoModalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="infoModalBody">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you shortly to discuss your case.');
+            this.reset();
+        });
+
+        // Portfolio item click
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                alert(title + ' - Contact us to learn more about this type of restoration.');
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            alert('Mobile menu feature coming soon!');
+        });
+
+        // Info Modal for Footer Links
+        const infoModal = document.getElementById('infoModal');
+        const infoModalTitle = document.getElementById('infoModalTitle');
+        const infoModalBody = document.getElementById('infoModalBody');
+        const infoModalClose = document.getElementById('infoModalClose');
+
+        const modalContent = {
+            uploadPortal: {
+                title: '<i class="fas fa-cloud-upload-alt"></i> Upload Portal',
+                body: `
+                    <div style="text-align: center; padding: 1rem 0;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: var(--gray-800);">Secure File Upload</h4>
+                        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Send your digital scans directly to our lab. We accept all major file formats including STL, PLY, and OBJ.</p>
+                        <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 12px; text-align: left; margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color: var(--accent);"></i> Email your files to:</p>
+                            <p style="font-size: 1.1rem; color: var(--primary);">Primedentalstudio@yahoo.com</p>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--gray-500);">Please include your practice name and case details in the email.</p>
+                    </div>
+                `
+            },
+            fileRequirements: {
+                title: '<i class="fas fa-file-alt"></i> File Requirements',
+                body: `
+                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">To ensure the best results, please follow these guidelines when submitting digital files:</p>
+                    <div style="space-y: 1rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
+                            <i class="fas fa-file" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Accepted Formats</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">STL, PLY, OBJ, and most industry-standard formats</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
+                            <i class="fas fa-ruler" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Scan Quality</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Ensure complete scans with clear margin lines</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem;">
+                            <i class="fas fa-tooth" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Bite Registration</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Include bite scan for multi-unit cases</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
+                            <i class="fas fa-comment" style="color: var(--accent); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600; margin-bottom: 0.25rem;">Prescription</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Include detailed Rx with shade, material, and design notes</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            designServices: {
+                title: '<i class="fas fa-drafting-compass"></i> Design Services',
+                body: `
+                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">Need CAD design only? We offer professional design services using industry-leading software:</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <i class="fas fa-cube" style="font-size: 2rem; margin-bottom: 0.75rem;"></i>
+                            <h5 style="margin-bottom: 0.25rem;">Exocad</h5>
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Full module access</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <i class="fas fa-shapes" style="font-size: 2rem; margin-bottom: 0.75rem;"></i>
+                            <h5 style="margin-bottom: 0.25rem;">3Shape</h5>
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Dental System</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 12px;">
+                        <h5 style="margin-bottom: 1rem;"><i class="fas fa-list-check" style="color: var(--accent);"></i> Design Services Include:</h5>
+                        <ul style="list-style: none; color: var(--gray-600);">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Crown & bridge design</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Implant abutment design</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Full denture design</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Surgical guide design</li>
+                            <li><i class="fas fa-check" style="color: var(--accent); margin-right: 0.5rem;"></i> Custom abutments</li>
+                        </ul>
+                    </div>
+                `
+            },
+            rushCases: {
+                title: '<i class="fas fa-bolt"></i> Rush Cases',
+                body: `
+                    <div style="text-align: center; padding: 1rem 0;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-bolt" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: var(--gray-800);">Need It Fast?</h4>
+                        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">We offer expedited processing for urgent cases. Contact us for same-day or next-day service.</p>
+                    </div>
+                    <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #fffaf0; border-radius: 10px; border-left: 4px solid var(--accent);">
+                            <i class="fas fa-clock" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600;">Same-Day Service</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Crown design & milling - ready in 4-6 hours</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #fffaf0; border-radius: 10px; border-left: 4px solid var(--accent);">
+                            <i class="fas fa-shipping-fast" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600;">Next-Day Delivery</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Most restorations shipped within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1rem 1.5rem; border-radius: 12px; text-align: center;">
+                        <p style="margin: 0;"><i class="fas fa-phone"></i> Call us at +1 (267) 437-8816 for rush case pricing</p>
+                    </div>
+                `
+            },
+            shippingInfo: {
+                title: '<i class="fas fa-shipping-fast"></i> Shipping Information',
+                body: `
+                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">We ship nationwide with reliable carriers to ensure your cases arrive safely and on time:</p>
+                    <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
+                            <i class="fas fa-box" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600;">Standard Shipping</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">UPS Ground / FedEx Ground - 1-2 business days</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
+                            <i class="fas fa-plane" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600;">Express Shipping</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">UPS Next Day / FedEx Priority - Next business day</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 10px;">
+                            <i class="fas fa-hand-holding" style="color: var(--accent); font-size: 1.5rem;"></i>
+                            <div>
+                                <h5 style="font-weight: 600;">Local Pickup</h5>
+                                <p style="color: var(--gray-600); font-size: 0.9rem;">Available at our Warminster location</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #f0fff4; padding: 1rem 1.5rem; border-radius: 12px; border-left: 4px solid #48bb78;">
+                        <p style="margin: 0; color: #276749;"><i class="fas fa-check-circle"></i> All shipments include tracking numbers sent via email</p>
+                    </div>
+                `
+            },
+            priceList: {
+                title: '<i class="fas fa-tags"></i> Price List',
+                body: `
+                    <p style="margin-bottom: 1.5rem; color: var(--gray-600);">Competitive pricing for high-quality dental prosthetics:</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-crown" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                            <h5 style="font-weight: 600;">Zirconia Crown</h5>
+                            <p style="color: var(--gray-500); font-size: 0.85rem;">$100</p>
+                        </div>
+                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-gem" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                            <h5 style="font-weight: 600;">e.max Crown</h5>
+                            <p style="color: var(--gray-500); font-size: 0.85rem;">$120</p>
+                        </div>
+                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-teeth" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                            <h5 style="font-weight: 600;">Full Denture</h5>
+                            <p style="color: var(--gray-500); font-size: 0.85rem;">$210</p>
+                        </div>
+                    </div>
+                    <div style="background: #fffaf0; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid var(--accent);">
+                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent);"></i> Volume discounts available for high-volume practices.</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                        <p style="margin-bottom: 1rem;"><i class="fas fa-file-pdf"></i> Request detailed price list</p>
+                        <a href="mailto:Primedentalstudio@yahoo.com?subject=Complete Price List Request" style="display: inline-block; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                    </div>
+                `
+            },
+            privacyPolicy: {
+                title: '<i class="fas fa-shield-alt"></i> Privacy Policy',
+                body: `
+                    <div style="max-height: 400px; overflow-y: auto; padding-right: 0.5rem;">
+                        <p style="margin-bottom: 1rem; color: var(--gray-600);">At Prime Dental Studio, we take your privacy seriously. This policy outlines how we handle your data:</p>
+                        
+                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-lock" style="color: var(--accent);"></i> Data Protection</h5>
+                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">All patient data and digital scans are encrypted and stored securely. We comply with HIPAA regulations for all patient information.</p>
+                        
+                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-file-medical" style="color: var(--accent);"></i> Patient Information</h5>
+                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Patient names and identifiable information are only used for case processing. We do not share patient data with third parties.</p>
+                        
+                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-cloud" style="color: var(--accent);"></i> File Storage</h5>
+                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Digital files are retained for quality assurance purposes for 7 years, then securely deleted upon request.</p>
+                        
+                        <h5 style="font-weight: 600; margin: 1rem 0 0.5rem;"><i class="fas fa-handshake" style="color: var(--accent);"></i> Third Parties</h5>
+                        <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">We do not sell or share your practice information with marketing companies or unrelated third parties.</p>
+                        
+                        <div style="background: var(--gray-50); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                            <p style="font-size: 0.85rem; color: var(--gray-500); margin: 0;">Last updated: January 2026. For questions, contact us at Primedentalstudio@yahoo.com</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Footer link click handlers
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalType = this.getAttribute('data-modal');
+                const content = modalContent[modalType];
+                
+                if (content) {
+                    infoModalTitle.innerHTML = content.title;
+                    infoModalBody.innerHTML = content.body;
+                    infoModal.classList.add('active');
+                }
+            });
+        });
+
+        // Close info modal
+        infoModalClose.addEventListener('click', function() {
+            infoModal.classList.remove('active');
+        });
+
+        // Close info modal when clicking outside
+        infoModal.addEventListener('click', function(e) {
+            if (e.target === infoModal) {
+                infoModal.classList.remove('active');
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.service-card, .portfolio-item, .process-step, .testimonial-card, .full-service-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
