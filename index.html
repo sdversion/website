@@ -1,1602 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Dental Studio | Full-Service Digital Dental Laboratory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a365d;
-            --primary-light: #2c5282;
-            --accent: #d69e2e;
-            --accent-light: #ecc94b;
-            --white: #ffffff;
-            --gray-50: #f7fafc;
-            --gray-100: #edf2f7;
-            --gray-200: #e2e8f0;
-            --gray-600: #718096;
-            --gray-700: #4a5568;
-            --gray-800: #2d3748;
-            --gray-900: #1a202c;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--gray-800);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .logo-sub {
-            font-size: 0.7rem;
-            color: var(--gray-600);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray-700);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #2d3748 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
-            background-size: 100px 100px;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            color: white;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-badge i {
-            color: var(--accent-light);
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title span {
-            color: var(--accent-light);
-        }
-
-        .hero-desc {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-light);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 0.25rem;
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-image-main {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-image-frame {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--accent);
-            border-radius: 20px;
-            z-index: 0;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            z-index: 2;
-        }
-
-        .floating-card.card-2 {
-            top: 50px;
-            right: -20px;
-            animation: floatCard 3s ease-in-out infinite 0.5s;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating-card i {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .floating-card-text {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        .floating-card-sub {
-            font-size: 0.75rem;
-            color: var(--gray-600);
-        }
-
-        .services,
-        .technology,
-        .process {
-            padding: 6rem 0;
-            background: var(--gray-50);
-        }
-
-        .full-service,
-        .portfolio {
-            padding: 6rem 0;
-            background: white;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            color: var(--gray-600);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--gray-100);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-image {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 1.25rem;
-            display: block;
-            background: var(--gray-100);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            transform: rotateY(360deg);
-        }
-
-        .service-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 0.75rem;
-        }
-
-        .service-desc {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-
-        .service-link:hover {
-            gap: 0.75rem;
-        }
-
-        .full-service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .full-service-item {
-            text-align: center;
-            padding: 2rem;
-            background: var(--gray-50);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .full-service-item:hover {
-            background: white;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .full-service-item i {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.75rem;
-            margin: 0 auto 1.5rem;
-        }
-
-        .full-service-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-        }
-
-        .full-service-item p {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .tech-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .tech-image {
-            position: relative;
-        }
-
-        .tech-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .tech-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(214, 158, 46, 0.3);
-        }
-
-        .tech-badge-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        .tech-badge-text {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        .tech-content {
-            padding-left: 1rem;
-        }
-
-        .tech-list {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .tech-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .tech-list li:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transform: translateX(10px);
-        }
-
-        .tech-list i {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .tech-list-text h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.25rem;
-        }
-
-        .tech-list-text p {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            cursor: pointer;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-overlay p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.85rem;
-        }
-
-        .portfolio-overlay i {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-top: 4rem;
-            gap: 2rem;
-        }
-
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 10%;
-            right: 10%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-            flex: 1;
-            max-width: 220px;
-            margin: 0 auto;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border: 3px solid var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 0 auto 1.5rem;
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s ease;
-        }
-
-        .process-step:hover .step-number {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .step-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-        }
-
-        .step-desc {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .contact {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            position: relative;
-            overflow: hidden;
-            scroll-margin-top: 100px;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-            max-width: 760px;
-        }
-
-        .contact-content {
-            color: white;
-        }
-
-        .contact-content .section-title {
-            color: white;
-        }
-
-        .contact-content .section-desc {
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            max-width: 100%;
-        }
-
-        .contact-info {
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item i {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-light);
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item-text h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-item-text p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
-        .contact-item-text a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contact-item-text a:hover {
-            text-decoration: underline;
-        }
-
-        .footer {
-            background: var(--gray-900);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .logo-text {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .footer-column h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-column a {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-column a:hover {
-            color: var(--accent);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-bottom p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-        }
-
-        .modal {
-            display: none;
-        }
-
-        @media (max-width: 1200px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .portfolio-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .full-service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-container,
-            .tech-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content {
-                order: 2;
-            }
-
-            .hero-image {
-                order: 1;
-            }
-
-            .hero-desc {
-                margin: 0 auto 2rem;
-            }
-
-            .hero-buttons,
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .tech-content {
-                padding-left: 0;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .process-steps {
-                flex-wrap: wrap;
-            }
-
-            .process-steps::before {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .services-grid,
-            .full-service-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .floating-card.card-2 {
-                right: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .nav-container,
-            .container,
-            .footer-container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prime Dental Studio | Full-Service Digital Dental Laboratory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #1a365d; --primary-light: #2c5282; --accent: #d69e2e; --accent-light: #ecc94b;
+      --white: #ffffff; --gray-50: #f7fafc; --gray-100: #edf2f7; --gray-200: #e2e8f0;
+      --gray-600: #718096; --gray-700: #4a5568; --gray-800: #2d3748; --gray-900: #1a202c;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); line-height: 1.6; overflow-x: hidden; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,.1); transition: all .3s ease; }
+    .navbar.scrolled { background: rgba(255,255,255,.98); box-shadow: 0 4px 30px rgba(0,0,0,.15); }
+    .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+    .logo-sub { font-size: .7rem; color: var(--gray-600); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: .95rem; position: relative; transition: color .3s ease; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width .3s ease; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { width: 100%; }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+    .hero { min-height: 100vh; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #2d3748 100%); position: relative; display: flex; align-items: center; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>'); background-size: 100px 100px; animation: float 20s linear infinite; }
+    @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-100px) rotate(360deg); } }
+    .hero-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+    .hero-content { color: white; animation: fadeInUp 1s ease; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.1); backdrop-filter: blur(10px); padding: .5rem 1rem; border-radius: 50px; font-size: .85rem; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,.2); }
+    .hero-badge i { color: var(--accent-light); }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+    .hero-title span { color: var(--accent-light); }
+    .hero-desc { font-size: 1.15rem; color: rgba(255,255,255,.85); margin-bottom: 2rem; max-width: 500px; line-height: 1.8; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-secondary { background: rgba(255,255,255,.1); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; transition: all .3s ease; border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(10px); }
+    .btn-secondary:hover { background: rgba(255,255,255,.2); transform: translateY(-3px); }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); }
+    .stat-item { text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--accent-light); }
+    .stat-label { font-size: .9rem; color: rgba(255,255,255,.7); margin-top: .25rem; }
+    .hero-image { position: relative; animation: fadeInUp 1s ease .2s both; }
+    .hero-image-main { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,.3); position: relative; z-index: 1; object-fit: cover; object-position: center; }
+    .hero-image-frame { position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; border: 3px solid var(--accent); border-radius: 20px; z-index: 0; }
+    .floating-card { position: absolute; background: white; padding: 1rem 1.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display: flex; align-items: center; gap: .75rem; z-index: 2; }
+    .floating-card.card-2 { top: 50px; right: -20px; animation: floatCard 3s ease-in-out infinite .5s; }
+    @keyframes floatCard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .floating-card i { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+    .floating-card-text { font-size: .85rem; font-weight: 600; color: var(--gray-800); }
+    .floating-card-sub { font-size: .75rem; color: var(--gray-600); }
+    .services, .technology, .process { padding: 6rem 0; background: var(--gray-50); }
+    .full-service, .portfolio { padding: 6rem 0; background: white; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-label { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent); font-weight: 600; font-size: .9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2.75rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+    .section-desc { color: var(--gray-600); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .service-card { background: white; border-radius: 20px; padding: 2.5rem; transition: all .4s ease; position: relative; overflow: hidden; border: 1px solid var(--gray-100); }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-image { width: 100%; height: 210px; object-fit: cover; object-position: center; border-radius: 16px; margin-bottom: 1.25rem; display: block; background: var(--gray-100); }
+    .service-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; margin-bottom: 1.5rem; transition: all .4s ease; }
+    .service-card:hover .service-icon { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); transform: rotateY(360deg); }
+    .service-title { font-size: 1.25rem; font-weight: 700; color: var(--gray-800); margin-bottom: .75rem; }
+    .service-desc { color: var(--gray-600); font-size: .95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .service-link { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; transition: gap .3s ease; }
+    .service-link:hover { gap: .75rem; }
+    .full-service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .full-service-item { text-align: center; padding: 2rem; background: var(--gray-50); border-radius: 20px; transition: all .3s ease; }
+    .full-service-item:hover { background: white; box-shadow: 0 15px 40px rgba(0,0,0,.1); transform: translateY(-5px); }
+    .full-service-item i { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; margin: 0 auto 1.5rem; }
+    .full-service-item h4 { font-size: 1.1rem; font-weight: 600; color: var(--gray-800); margin-bottom: .5rem; }
+    .full-service-item p { font-size: .9rem; color: var(--gray-600); }
+    .tech-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .tech-image { position: relative; }
+    .tech-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.15); object-fit: cover; object-position: center; }
+    .tech-badge { position: absolute; bottom: -20px; right: -20px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; padding: 1.5rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(214,158,46,.3); }
+    .tech-badge-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; }
+    .tech-badge-text { font-size: .85rem; opacity: .9; }
+    .tech-content { padding-left: 1rem; }
+    .tech-list { list-style: none; margin-top: 2rem; }
+    .tech-list li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: white; border-radius: 12px; transition: all .3s ease; }
+    .tech-list li:hover { box-shadow: 0 5px 20px rgba(0,0,0,.1); transform: translateX(10px); }
+    .tech-list i { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+    .tech-list-text h4 { font-size: 1rem; font-weight: 600; color: var(--gray-800); margin-bottom: .25rem; }
+    .tech-list-text p { font-size: .9rem; color: var(--gray-600); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .portfolio-item { position: relative; border-radius: 15px; overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .portfolio-item:hover img { transform: scale(1.1); }
+    .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,54,93,.9) 0%, rgba(44,82,130,.9) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity .4s ease; padding: 1.5rem; text-align: center; }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay h4 { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+    .portfolio-overlay p { color: rgba(255,255,255,.8); font-size: .85rem; }
+    .portfolio-overlay i { width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 1rem; }
+    .process-steps { display: flex; justify-content: space-between; position: relative; margin-top: 4rem; gap: 2rem; }
+    .process-steps::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%); }
+    .process-step { text-align: center; position: relative; flex: 1; max-width: 220px; margin: 0 auto; }
+    .step-number { width: 80px; height: 80px; background: white; border: 3px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--accent); margin: 0 auto 1.5rem; position: relative; z-index: 1; transition: all .4s ease; }
+    .process-step:hover .step-number { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; transform: scale(1.1); }
+    .step-title { font-size: 1.1rem; font-weight: 600; color: var(--gray-800); margin-bottom: .5rem; }
+    .step-desc { font-size: .9rem; color: var(--gray-600); }
+    .contact { padding: 6rem 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); position: relative; overflow: hidden; scroll-margin-top: 100px; }
+    .contact::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: rgba(255,255,255,.03); border-radius: 50%; }
+    .contact-container { display: grid; grid-template-columns: 1fr; gap: 2rem; position: relative; z-index: 1; max-width: 760px; }
+    .contact-content { color: white; }
+    .contact-content .section-title { color: white; }
+    .contact-content .section-desc { color: rgba(255,255,255,.8); margin: 0; max-width: 100%; }
+    .contact-info { margin-top: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-item i { width: 50px; height: 50px; background: rgba(255,255,255,.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent-light); font-size: 1.25rem; flex-shrink: 0; }
+    .contact-item-text h4 { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
+    .contact-item-text p, .contact-item-text a { color: rgba(255,255,255,.8); font-size: .95rem; text-decoration: none; }
+    .contact-item-text a:hover { text-decoration: underline; }
+    .footer { background: var(--gray-900); color: white; padding: 4rem 0 2rem; }
+    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand .logo-text { color: white; margin-bottom: 1rem; }
+    .footer-brand p { color: var(--gray-600); font-size: .95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all .3s ease; }
+    .social-links a:hover { background: var(--accent); transform: translateY(-3px); }
+    .footer-column h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; color: white; }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: .75rem; }
+    .footer-column a { color: var(--gray-600); text-decoration: none; font-size: .95rem; transition: color .3s ease; }
+    .footer-column a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { color: var(--gray-600); font-size: .9rem; }
+    .modal { display: none; }
+    @media (max-width: 1200px) { .services-grid { grid-template-columns: repeat(2,1fr); } .portfolio-grid { grid-template-columns: repeat(3,1fr); } .full-service-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 992px) { .hero-container,.tech-container { grid-template-columns: 1fr; text-align: center; } .hero-content { order: 2; } .hero-image { order: 1; } .hero-desc { margin: 0 auto 2rem; } .hero-buttons,.hero-stats { justify-content: center; } .tech-content { padding-left: 0; } .footer-grid { grid-template-columns: repeat(2,1fr); } .process-steps { flex-wrap: wrap; } .process-steps::before { display: none; } }
+    @media (max-width: 768px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .hero-title { font-size: 2.5rem; } .section-title { font-size: 2rem; } .services-grid,.full-service-grid,.footer-grid { grid-template-columns: 1fr; } .portfolio-grid { grid-template-columns: repeat(2,1fr); } .floating-card.card-2 { right: 0; } }
+    @media (max-width: 480px) { .hero-title { font-size: 2rem; } .portfolio-grid { grid-template-columns: 1fr; } .hero-stats { flex-direction: column; gap: 1.5rem; } .nav-container,.container,.footer-container { padding-left: 1rem; padding-right: 1rem; } }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-tooth"></i>
-                </div>
-                <div>
-                    <div class="logo-text">Prime</div>
-                    <div class="logo-sub">Dental Studio</div>
-                </div>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#technology">Technology</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <div class="logo-icon"><i class="fas fa-tooth"></i></div>
+        <div><div class="logo-text">Prime</div><div class="logo-sub">Dental Studio</div></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-award"></i><span>40 Years of Excellence</span></div>
+        <h1 class="hero-title">Full-Service Digital<br><span>Dental Laboratory</span></h1>
+        <p class="hero-desc">Prime Dental Studio combines 40 years of expertise with cutting-edge digital technology. Send us your digital scans and we'll start working immediately - no physical impressions needed.</p>
+        <div class="hero-buttons"><a href="#services" class="btn-secondary"><i class="fas fa-list"></i><span>View Services</span></a></div>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-number">40</div><div class="stat-label">Years Experience</div></div>
+          <div class="stat-item"><div class="stat-number">100K</div><div class="stat-label">Cases Completed</div></div>
         </div>
-    </nav>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-frame"></div>
+        <img src="https://kimi-web-img.moonshot.cn/img/dentallabs.org/7b0d543d1b4978ee93679ac16dd30f0be5c91234.jpg" alt="Dental Technician" class="hero-image-main" />
+        <div class="floating-card card-2"><i class="fas fa-bolt"></i><div><div class="floating-card-text">Same-Day Start</div><div class="floating-card-sub">Immediate Processing</div></div></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-award"></i>
-                    <span>40 Years of Excellence</span>
-                </div>
-                <h1 class="hero-title">
-                    Full-Service Digital<br>
-                    <span>Dental Laboratory</span>
-                </h1>
-                <p class="hero-desc">
-                    Prime Dental Studio combines 40 years of expertise with cutting-edge digital technology.
-                    Send us your digital scans and we'll start working immediately - no physical impressions needed.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn-secondary">
-                        <i class="fas fa-list"></i>
-                        <span>View Services</span>
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">40</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100K+</div>
-                        <div class="stat-label">Cases Completed</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-image-frame"></div>
-                <img src="https://kimi-web-img.moonshot.cn/img/dentallabs.org/7b0d543d1b4978ee93679ac16dd30f0be5c91234.jpg" alt="Dental Technician" class="hero-image-main">
-                <div class="floating-card card-2">
-                    <i class="fas fa-bolt"></i>
-                    <div>
-                        <div class="floating-card-text">Same-Day Start</div>
-                        <div class="floating-card-sub">Immediate Processing</div>
-                    </div>
-                </div>
-            </div>
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><i class="fas fa-teeth"></i><span>Our Services</span></div>
+        <h2 class="section-title">Complete Prosthetic Solutions</h2>
+        <p class="section-desc">From simple crowns to full-mouth rehabilitations - we handle it all with precision and care.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/0da44c9ceb8dac4a555e19bff26dcf3eb81084e0.jpg" alt="Zirconia crowns and bridges" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-crown"></i></div>
+          <h3 class="service-title">Crowns & Bridges</h3>
+          <p class="service-desc">Zirconia, E-max, PFM, and full-contour zirconia. All designed from digital scans for the perfect fit every time.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">
-                    <i class="fas fa-teeth"></i>
-                    <span>Our Services</span>
-                </div>
-                <h2 class="section-title">Complete Prosthetic Solutions</h2>
-                <p class="section-desc">
-                    From simple crowns to full-mouth rehabilitations - we handle it all with precision and care.
-                </p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=80"
-                        alt="Dental crowns and bridges"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="service-title">Crowns & Bridges</h3>
-                    <p class="service-desc">
-                        Zirconia, E-max, PFM, and full-contour zirconia. All designed from digital scans
-                        for the perfect fit every time.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80"
-                        alt="Implant prosthetics restoration"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-teeth-open"></i>
-                    </div>
-                    <h3 class="service-title">Implant Prosthetics</h3>
-                    <p class="service-desc">
-                        Screw-retained, cement-retained, All-on-4, All-on-6, and custom abutments.
-                        Full digital implant workflow supported.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80"
-                        alt="Dentures and partial restorations"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-teeth"></i>
-                    </div>
-                    <h3 class="service-title">Dentures & Partials</h3>
-                    <p class="service-desc">
-                        Digital dentures, chrome-cobalt partials, flexible Valplast, and implant-supported
-                        overdentures with precision fit.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=1200&q=80"
-                        alt="Aesthetic dental restorations"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3 class="service-title">Aesthetic Restorations</h3>
-                    <p class="service-desc">
-                        Layered zirconia, e.max veneers, inlays/onlays, and custom shade matching
-                        for natural, beautiful results.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1588776813677-77aaf5595b83?auto=format&fit=crop&w=1200&q=80"
-                        alt="Digital dental design workflow"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-x-ray"></i>
-                    </div>
-                    <h3 class="service-title">Digital Design</h3>
-                    <p class="service-desc">
-                        Exocad and 3Shape design services. We accept your scans and return ready-to-mill
-                        files or finished restorations.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=80"
-                        alt="Dental repair and reline service"
-                        class="service-image"
-                        loading="lazy"
-                        width="1200"
-                        height="800"
-                    >
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="service-title">Repairs & Reline</h3>
-                    <p class="service-desc">
-                        Fast turnaround on repairs, adjustments, relines, and additions.
-                        Digital records kept for all cases.
-                    </p>
-                    <a href="#contact" class="service-link">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/8ef75ee99a65f6b72d35c4a8d806d1c887ef1976.jpg" alt="Implant supported dental prosthesis" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+          <h3 class="service-title">Implant Prosthetics</h3>
+          <p class="service-desc">Screw-retained, cement-retained, All-on-4, All-on-6, and custom abutments. Full digital implant workflow supported.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
-
-    <section class="full-service">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">
-                    <i class="fas fa-infinity"></i>
-                    <span>Full Service</span>
-                </div>
-                <h2 class="section-title">Everything Under One Roof</h2>
-                <p class="section-desc">
-                    From design to delivery - complete digital and traditional workflow capabilities.
-                </p>
-            </div>
-            <div class="full-service-grid">
-                <div class="full-service-item">
-                    <i class="fas fa-file-import"></i>
-                    <h4>Digital Intake</h4>
-                    <p>STL files, intraoral scans, and digital prescriptions</p>
-                </div>
-                <div class="full-service-item">
-                    <i class="fas fa-drafting-compass"></i>
-                    <h4>CAD Design</h4>
-                    <p>Exocad & 3Shape design with expert technicians</p>
-                </div>
-                <div class="full-service-item">
-                    <i class="fas fa-cogs"></i>
-                    <h4>In-House Milling</h4>
-                    <p>5-axis milling for zirconia, PMMA, and wax</p>
-                </div>
-                <div class="full-service-item">
-                    <i class="fas fa-fire-alt"></i>
-                    <h4>Sintering & Finish</h4>
-                    <p>High-temp sintering and hand-layered ceramics</p>
-                </div>
-            </div>
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/706bc30a8aa733e5101ab355bf3cadcd10193fa7.jpg" alt="Chrome cobalt partial dentures" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-teeth"></i></div>
+          <h3 class="service-title">Dentures & Partials</h3>
+          <p class="service-desc">Digital dentures, chrome-cobalt partials, flexible Valplast, and implant-supported overdentures with precision fit.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
-
-    <section class="technology" id="technology">
-        <div class="container">
-            <div class="tech-container">
-                <div class="tech-image">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80" alt="Dental Technology" loading="lazy" width="1400" height="933">
-                    <div class="tech-badge">
-                        <div class="tech-badge-number">99.9%</div>
-                        <div class="tech-badge-text">Fit Rate</div>
-                    </div>
-                </div>
-                <div class="tech-content">
-                    <div class="section-label">
-                        <i class="fas fa-microchip"></i>
-                        <span>Technology</span>
-                    </div>
-                    <h2 class="section-title">Digital-First<br>Workflow</h2>
-                    <p class="section-desc" style="margin:0;">
-                        Our lab is built for the digital age. Send us your scans and we'll handle
-                        everything from design to finished restoration.
-                    </p>
-                    <ul class="tech-list">
-                        <li>
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <div class="tech-list-text">
-                                <h4>Direct Digital Upload</h4>
-                                <p>Secure intake for STL files and digital case information</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-cube"></i>
-                            <div class="tech-list-text">
-                                <h4>Exocad & 3Shape</h4>
-                                <p>Latest design software with experienced digital technicians</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-print"></i>
-                            <div class="tech-list-text">
-                                <h4>5-Axis Milling Center</h4>
-                                <p>In-house milling for zirconia, PMMA, wax, and more</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-fire"></i>
-                            <div class="tech-list-text">
-                                <h4>High-Temp Sintering</h4>
-                                <p>Reliable finishing workflow for strength, shade, and consistency</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/029b5362385a99ede840b01514db4ec0178df729.jpg" alt="E-Max veneers aesthetic restorations" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-magic"></i></div>
+          <h3 class="service-title">Aesthetic Restorations</h3>
+          <p class="service-desc">Layered zirconia, e.max veneers, inlays/onlays, and custom shade matching for natural, beautiful results.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
-
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">
-                    <i class="fas fa-images"></i>
-                    <span>Portfolio</span>
-                </div>
-                <h2 class="section-title">Our Work</h2>
-                <p class="section-desc">
-                    Browse through our portfolio of precision-crafted dental restorations.
-                </p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/bayshoredentalstudio.com/6f286c18b5460280a4e013f7f7a41886c7f32a3d.jpeg" alt="Zirconia Crown" loading="lazy" width="800" height="800">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Zirconia Crown</h4>
-                        <p>High-strength posterior restoration</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.firstchoicelab.com/1db240f15de1413ad6e460ccc59fffea1f0edc81.jpg" alt="Zirconia Bridge" loading="lazy" width="800" height="800">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Zirconia Bridge</h4>
-                        <p>Multi-unit posterior bridge</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://kimi-web-img.moonshot.cn/img/woodstock-smiles.com/da62a52d35213cabb827b8533053f5e5a78dc30b.jpg" alt="Hand-Finished Crown" loading="lazy" width="800" height="800">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Hand-Finished Crown</h4>
-                        <p>Expert technician detailing and finish</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80" alt="Implant Prosthetic" loading="lazy" width="1200" height="800">
-                    <div class="portfolio-overlay">
-                        <i class="fas fa-search-plus"></i>
-                        <h4>Implant Prosthetic</h4>
-                        <p>Digital implant-supported restoration</p>
-                    </div>
-                </div>
-            </div>
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6ea27f4d17337a54c6ba9da64b127b1819f471ad.jpg" alt="Modern exocad dental CAD interface" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-x-ray"></i></div>
+          <h3 class="service-title">Digital Design</h3>
+          <p class="service-desc">Exocad and 3Shape design services. We accept your scans and return ready-to-mill files or finished restorations.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
-
-    <section class="process" id="process">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">
-                    <i class="fas fa-diagram-project"></i>
-                    <span>Process</span>
-                </div>
-                <h2 class="section-title">Simple Digital Workflow</h2>
-                <p class="section-desc">
-                    A streamlined process from case submission to final delivery.
-                </p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Send Case</h3>
-                    <p class="step-desc">Submit your scan, prescription, and case details.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Design & Review</h3>
-                    <p class="step-desc">Our team designs the case using a precise digital workflow.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Production</h3>
-                    <p class="step-desc">Milling, finishing, and quality control are completed in-house.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Delivery</h3>
-                    <p class="step-desc">Your restoration is completed and ready for delivery or pickup.</p>
-                </div>
-            </div>
+        <div class="service-card">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/8a41766275d6b14ca008f5223e6279885cf8c917.jpg" alt="Denture reline before after" class="service-image" loading="lazy" width="1200" height="800" />
+          <div class="service-icon"><i class="fas fa-tools"></i></div>
+          <h3 class="service-title">Repairs & Reline</h3>
+          <p class="service-desc">Fast turnaround on repairs, adjustments, relines, and additions. Digital records kept for all cases.</p>
+          <a href="#contact" class="service-link"><span>Learn More</span><i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-container">
-                <div class="contact-content">
-                    <div class="section-label">
-                        <i class="fas fa-envelope"></i>
-                        <span style="color: var(--accent-light);">Contact Us</span>
-                    </div>
+  <section class="full-service">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><i class="fas fa-infinity"></i><span>Full Service</span></div>
+        <h2 class="section-title">Everything Under One Roof</h2>
+        <p class="section-desc">From design to delivery - complete digital and traditional workflow capabilities.</p>
+      </div>
+      <div class="full-service-grid">
+        <div class="full-service-item"><i class="fas fa-file-import"></i><h4>Digital Intake</h4><p>STL files, intraoral scans, and digital prescriptions</p></div>
+        <div class="full-service-item"><i class="fas fa-drafting-compass"></i><h4>CAD Design</h4><p>Exocad & 3Shape design with expert technicians</p></div>
+        <div class="full-service-item"><i class="fas fa-cogs"></i><h4>In-House Milling</h4><p>5-axis milling for zirconia, PMMA, and wax</p></div>
+        <div class="full-service-item"><i class="fas fa-fire-alt"></i><h4>Sintering & Finish</h4><p>High-temp sintering and hand-layered ceramics</p></div>
+      </div>
+    </div>
+  </section>
 
-                    <h2 class="section-title" style="color: white;">Get in Touch With Prime Dental Studio</h2>
-
-                    <p class="section-desc" style="color: rgba(255,255,255,0.8);">
-                        Contact Prime Dental Studio for case questions, turnaround times, digital workflow support,
-                        and general lab inquiries. We also provide digital work services. Please call us directly for more detailed information.
-                    </p>
-
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-item-text">
-                                <h4>Address</h4>
-                                <p>909 W Countyline Road<br>Warminster, PA 18974</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div class="contact-item-text">
-                                <h4>Phone</h4>
-                                <p><a href="tel:+12674378816">+1 267-437-8816</a></p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div class="contact-item-text">
-                                <h4>Email</h4>
-                                <p><a href="mailto:primedentalstudio@yahoo.com">primedentalstudio@yahoo.com</a></p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div class="contact-item-text">
-                                <h4>Business Hours</h4>
-                                <p>Mon - Fri 9AM - 6PM</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section class="technology" id="technology">
+    <div class="container">
+      <div class="tech-container">
+        <div class="tech-image">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/d17ad08db89de3f1c2dafebeb02bac33baa15ce4.jpg" alt="UP3D dental milling machine" loading="lazy" width="1400" height="933" />
+          <div class="tech-badge"><div class="tech-badge-number">99.9%</div><div class="tech-badge-text">Fit Rate</div></div>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo" style="margin-bottom: 1rem;">
-                        <div class="logo-icon">
-                            <i class="fas fa-tooth"></i>
-                        </div>
-                        <div>
-                            <div class="logo-text">Prime</div>
-                            <div class="logo-sub">Dental Studio</div>
-                        </div>
-                    </div>
-                    <p>
-                        Full-service digital dental laboratory delivering precise restorations,
-                        dependable turnaround, and experienced technical support.
-                    </p>
-                    <div class="social-links">
-                        <a href="mailto:primedentalstudio@yahoo.com"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+12674378816"><i class="fas fa-phone"></i></a>
-                        <a href="#contact"><i class="fas fa-map-marker-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Crowns & Bridges</a></li>
-                        <li><a href="#services">Implant Prosthetics</a></li>
-                        <li><a href="#services">Dentures & Partials</a></li>
-                        <li><a href="#services">Digital Design</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#technology">Technology</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#process">Process</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="tel:+12674378816">+1 267-437-8816</a></li>
-                        <li><a href="mailto:primedentalstudio@yahoo.com">Email Us</a></li>
-                        <li><a href="#contact">Warminster, PA</a></li>
-                        <li><a href="#contact">Mon - Fri 9AM - 6PM</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Prime Dental Studio. All rights reserved.</p>
-                <p>Digital workflow support available by phone.</p>
-            </div>
+        <div class="tech-content">
+          <div class="section-label"><i class="fas fa-microchip"></i><span>Technology</span></div>
+          <h2 class="section-title">Digital-First<br />Workflow</h2>
+          <p class="section-desc" style="margin: 0;">Our lab is built for the digital age. Send us your scans and we'll handle everything from design to finished restoration.</p>
+          <ul class="tech-list">
+            <li><i class="fas fa-cloud-upload-alt"></i><div class="tech-list-text"><h4>Direct Digital Upload</h4><p>Secure intake for STL files and digital case information</p></div></li>
+            <li><i class="fas fa-cube"></i><div class="tech-list-text"><h4>Exocad & 3Shape</h4><p>Latest design software with experienced digital technicians</p></div></li>
+            <li><i class="fas fa-print"></i><div class="tech-list-text"><h4>5-Axis Milling Center</h4><p>In-house milling for zirconia, PMMA, wax, and more</p></div></li>
+            <li><i class="fas fa-fire"></i><div class="tech-list-text"><h4>High-Temp Sintering</h4><p>Reliable finishing workflow for strength, shade, and consistency</p></div></li>
+          </ul>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const navbar = document.querySelector('.navbar');
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><i class="fas fa-images"></i><span>Portfolio</span></div>
+        <h2 class="section-title">Our Work</h2>
+        <p class="section-desc">Browse through our portfolio of precision-crafted dental restorations.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item"><img src="https://kimi-web-img.moonshot.cn/img/bayshoredentalstudio.com/6f286c18b5460280a4e013f7f7a41886c7f32a3d.jpeg" alt="Zirconia Crown" loading="lazy" width="800" height="800" /><div class="portfolio-overlay"><i class="fas fa-search-plus"></i><h4>Zirconia Crown</h4><p>High-strength posterior restoration</p></div></div>
+        <div class="portfolio-item"><img src="https://kimi-web-img.moonshot.cn/img/www.firstchoicelab.com/1db240f15de1413ad6e460ccc59fffea1f0edc81.jpg" alt="Zirconia Bridge" loading="lazy" width="800" height="800" /><div class="portfolio-overlay"><i class="fas fa-search-plus"></i><h4>Zirconia Bridge</h4><p>Multi-unit posterior bridge</p></div></div>
+        <div class="portfolio-item"><img src="https://kimi-web-img.moonshot.cn/img/woodstock-smiles.com/da62a52d35213cabb827b8533053f5e5a78dc30b.jpg" alt="Hand-Finished Crown" loading="lazy" width="800" height="800" /><div class="portfolio-overlay"><i class="fas fa-search-plus"></i><h4>Hand-Finished Crown</h4><p>Expert technician detailing and finish</p></div></div>
+        <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80" alt="Implant Prosthetic" loading="lazy" width="1200" height="800" /><div class="portfolio-overlay"><i class="fas fa-search-plus"></i><h4>Implant Prosthetic</h4><p>Digital implant-supported restoration</p></div></div>
+      </div>
+    </div>
+  </section>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><i class="fas fa-diagram-project"></i><span>Process</span></div>
+        <h2 class="section-title">Simple Digital Workflow</h2>
+        <p class="section-desc">A streamlined process from case submission to final delivery.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-number">1</div><h3 class="step-title">Send Case</h3><p class="step-desc">Submit your scan, prescription, and case details.</p></div>
+        <div class="process-step"><div class="step-number">2</div><h3 class="step-title">Design Review</h3><p class="step-desc">Our team designs the case using a precise digital workflow.</p></div>
+        <div class="process-step"><div class="step-number">3</div><h3 class="step-title">Production</h3><p class="step-desc">Milling, finishing, and quality control are completed in-house.</p></div>
+        <div class="process-step"><div class="step-number">4</div><h3 class="step-title">Delivery</h3><p class="step-desc">Your restoration is completed and ready for delivery or pickup.</p></div>
+      </div>
+    </div>
+  </section>
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (!targetId || targetId === '#') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-content">
+          <div class="section-label"><i class="fas fa-envelope"></i><span style="color: var(--accent-light);">Contact Us</span></div>
+          <h2 class="section-title" style="color: white;">Get in Touch With Prime Dental Studio</h2>
+          <p class="section-desc" style="color: rgba(255,255,255,0.8);">Contact Prime Dental Studio for case questions, turnaround times, digital workflow support, and general lab inquiries. We also provide digital work services. Please call us directly for more detailed information.</p>
+          <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div class="contact-item-text"><h4>Address</h4><p>909 W Countyline Road<br />Warminster, PA 18974</p></div></div>
+            <div class="contact-item"><i class="fas fa-phone"></i><div class="contact-item-text"><h4>Phone</h4><p><a href="tel:+12674378816">267-437-8816</a></p></div></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><div class="contact-item-text"><h4>Email</h4><p><a href="mailto:primedentalstudio@yahoo.com">primedentalstudio@yahoo.com</a></p></div></div>
+            <div class="contact-item"><i class="fas fa-clock"></i><div class="contact-item-text"><h4>Business Hours</h4><p>Mon - Fri 9AM - 6PM</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom: 1rem;"><div class="logo-icon"><i class="fas fa-tooth"></i></div><div><div class="logo-text">Prime</div><div class="logo-sub">Dental Studio</div></div></div>
+          <p>Full-service digital dental laboratory delivering precise restorations, dependable turnaround, and experienced technical support.</p>
+          <div class="social-links"><a href="mailto:primedentalstudio@yahoo.com"><i class="fas fa-envelope"></i></a><a href="tel:+12674378816"><i class="fas fa-phone"></i></a><a href="#contact"><i class="fas fa-map-marker-alt"></i></a></div>
+        </div>
+        <div class="footer-column"><h4>Services</h4><ul><li><a href="#services">Crowns & Bridges</a></li><li><a href="#services">Implant Prosthetics</a></li><li><a href="#services">Dentures & Partials</a></li><li><a href="#services">Digital Design</a></li></ul></div>
+        <div class="footer-column"><h4>Company</h4><ul><li><a href="#technology">Technology</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#process">Process</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+12674378816">+1 267-437-8816</a></li><li><a href="mailto:primedentalstudio@yahoo.com">Email Us</a></li><li><a href="#contact">Warminster, PA</a></li><li><a href="#contact">Mon - Fri 9AM - 6PM</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Prime Dental Studio. All rights reserved.</p><p>Digital workflow support available by phone.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => { if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
 </body>
 </html>
